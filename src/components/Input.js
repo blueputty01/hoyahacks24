@@ -1,46 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { messages } from "app/page";
 
-export default function Input() {
-  async function postData(
-    url = "localhost:3000/api/llm/route",
-    message,
-    userId
-  ) {
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({ message, userId }),
-      });
+export default function Input({ handleFormSubmit }) {
+  const [message, setMessage] = useState("");
 
-      if (response.ok) {
-        messages.push({
-          id: 0,
-          content: response.json.result.response,
-        });
-      } else {
-      }
-    } catch (ex) {
-      messages.push({
-        id: 0,
-        content: ex,
-      });
-    }
-  }
-
-  const [typed_message, setMessage] = useState("");
   const handleChange = (event) => {
-    setMessage(event.target);
-  };
-
-  const handleFormSubmit = (event) => {
-    let submit_data = event.target.value;
-    let user_id = "0";
-    POST({ submit_data, user_id });
-
-    // TODO
+    setMessage(event.target.value);
   };
 
   return (
@@ -49,10 +15,18 @@ export default function Input() {
         type="text"
         id="chatbot-message-input"
         className="input"
+        value={message}
         onChange={handleChange}
       />
 
-      <input type="submit" value=">" onSubmit={handleFormSubmit} />
+      <input
+        type="submit"
+        value=">"
+        onSubmit={() => {
+          handleFormSubmit(message);
+          setMessage("");
+        }}
+      />
     </form>
   );
 }
