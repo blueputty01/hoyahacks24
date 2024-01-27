@@ -1,11 +1,14 @@
 "use client";
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { auth } from "utils/config";
+import bg from '/public/background.png';
+
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { auth } from 'utils/config';
+import Image from 'next/image';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -27,6 +30,19 @@ export default function Login() {
   console.log(error);
   return (
     <div className={styles.login}>
+      <Image
+        src={bg}
+        alt=""
+        layout="fill"
+        fill
+        sizes="100vw"
+        style={{
+          position: 'absolute',
+          zIndex: -1,
+          objectFit: 'cover',
+          objectPosition: 'center',
+        }}
+      />
       <div>
         <h1>Login</h1>
         <input
