@@ -13,7 +13,7 @@ export default function Input({ handleFormSubmit }) {
   };
 
   return (
-    <form>
+    <div>
       <input
         type="text"
         id="chatbot-message-input"
@@ -23,8 +23,6 @@ export default function Input({ handleFormSubmit }) {
       />
 
       <button
-        type="submit"
-        value=">"
         onSubmit={() => {
           handleFormSubmit(message);
           setMessage("");
@@ -32,6 +30,6 @@ export default function Input({ handleFormSubmit }) {
       >
         <IoMdSend />
       </button>
-    </form>
+    </div>
   );
 }
