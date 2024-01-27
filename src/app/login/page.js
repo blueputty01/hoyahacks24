@@ -33,7 +33,6 @@ export default function Login() {
       <Image
         src={bg}
         alt=""
-        layout="fill"
         fill
         sizes="100vw"
         style={{

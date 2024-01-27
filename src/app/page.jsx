@@ -1,14 +1,9 @@
 import { FaUserLock } from 'react-icons/fa';
 import styles from './page.module.css';
-import Link from 'next/link';
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Link href="/login" className={styles.description}>
-        Log in
-      </Link>
-
       <div className={styles.center}>
         <FaUserLock size={200} className={styles.logo} />
         <span className={styles.text}>SeCUREPod</span>
