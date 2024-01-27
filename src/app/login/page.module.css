@@ -1,4 +1,4 @@
-.login input {
+.text {
     background-color: aliceblue;
     color: rgb(0, 0, 0);
     height: 3rem;
@@ -10,6 +10,20 @@
     border-radius: 8px;
     border: 2px solid #3e3e3e00;
     width: 20rem;
+}
+
+.check {
+    
+}
+
+.check input {
+    height: 1rem;
+    display: flex;
+    margin: auto;
+}
+
+.check label {
+    text-align: center;
 }
 
 .login {
@@ -36,6 +50,7 @@
     border: 2px solid #3e3e3e00;
     width: 20rem;
     transition-duration: 0.4s;
+    margin-bottom: 1rem;
 }
 
 .login button:hover {
