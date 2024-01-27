@@ -123,23 +123,28 @@ a {
   width: 80rem;
   height: 60rem;
   max-width: 80rem;
+  display: flex;
+  flex-direction: column;
 
   .message
   {
-    width:100%;
+    max-width:100%;
     text-size-adjust: auto;
-    padding: 2rem 2rem 2rem 2rem;
-
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border-radius: 1rem;
 
     &.bot
     {
-      background-color: rgba(rgba(101, 9, 200, 100));
-      text-align:left;
+      color: white;
+      background-color: rgba(101, 9, 200, 100);
+      align-self: left;
     }
 
     &.user
     {
-      text-align:right;
+      display: flex;
+      align-self:right;
       /* background-color: rgba() */
     }
   }

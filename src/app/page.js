@@ -1,25 +1,21 @@
-// import React, { useState } from 'react';
 import Image from "next/image";
 import styles from "./page.module.css";
 
-import Input from '@/components/Input'
-import { useState } from "react";
+import Input from 'components/Input'
 
 const messages = 
 [
   {
     id: 0,
-    content: "Welcome to SecurePod ! this is a lot of extra text that isn't necessary but hopefully causes a line overflow. A:WFLKJ ASDLFKJ WEPOFIJE WFPOIEWFKJ WES?LFKJ A:LKFJ EWPFOIE JFas"
+    content: "Welcome to SecurePod! this is a lot of extra text that isn't necessary but hopefully causes a line overflow. A:WFLKJ ASDLFKJ WEPOFIJE WFPOIEWFKJ WES?LFKJ A:LKFJ EWPFOIE JFas"
   },
   {
     id: 1,
-    content: "Welcome to SecurePod" 
+    content: "Hello" 
   }
 ]
 
 export default function Home() {
-    
-
   const messages_html = messages.map((message, idx) => {
     return( <div key={message.id} className={message.id === 0 ? "message bot" : "message user"}>{message.content}</div> );
   });
@@ -32,44 +28,11 @@ export default function Home() {
         <div className="scrollbox">
           {messages_html}
         </div>
-        <Input/>
+        {/* <Input
+          onChange={handleChange}
+        /> */}
       </div>
 
-
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
       <div className={styles.grid}>
         <a
