@@ -3,7 +3,7 @@ import styles from './page.module.css';
 
 import Input from 'components/Input';
 
-const messages = [
+export const messages = [
   {
     id: 0,
     content:
