@@ -9,8 +9,10 @@ async function run(model, input) {
     throw new Error('Missing CF_TOKEN');
   }
 
+  console.log(process.env.CF_TOKEN)
+
   const response = await fetch(
-    `https://api.cloudflare.com/client/v4/accounts/9dcbe3f76f2d54534c6aba213b8e7a81/ai/run/${model}`,
+    `https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT}/ai/run/${model}`,
     {
       headers: { Authorization: `Bearer ${process.env.CF_TOKEN}` },
       method: 'POST',
