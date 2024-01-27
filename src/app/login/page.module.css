@@ -12,18 +12,14 @@
   width: 20rem;
 }
 
-.check {
-    
-}
-
 .check input {
-    height: 1rem;
-    display: flex;
-    margin: auto;
+  height: 1rem;
+  display: flex;
+  margin: auto;
 }
 
 .check label {
-    text-align: center;
+  text-align: center;
 }
 
 .login div {
@@ -39,7 +35,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   padding: 1rem;
 }
 
@@ -59,7 +54,7 @@
   border: 2px solid #3e3e3e00;
   width: 20rem;
   transition-duration: 0.4s;
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .login button:hover {
