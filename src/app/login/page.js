@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { auth } from "../firebase/config";
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { auth } from 'utils/config';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const router = useRouter();
 
@@ -42,9 +42,6 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={handleSignin}>Log in</button>
-        <input>
-        type="checkbox"
-        </input>
       </div>
     </div>
   );

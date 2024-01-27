@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { messages } from "app/page";
+import { useState, useEffect } from 'react';
+import { messages } from 'app/dashboard/page';
 
-import { IoMdSend } from "react-icons/io";
+import { IoMdSend } from 'react-icons/io';
 
 export default function Input({ handleFormSubmit }) {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const handleChange = (event) => {
     setMessage(event.target.value);
@@ -25,7 +25,7 @@ export default function Input({ handleFormSubmit }) {
       <button
         onSubmit={() => {
           handleFormSubmit(message);
-          setMessage("");
+          setMessage('');
         }}
       >
         <IoMdSend />

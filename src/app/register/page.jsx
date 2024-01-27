@@ -2,7 +2,7 @@
 
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useState } from 'react';
-import { auth } from '../firebase/config';
+import { auth } from 'utils/config';
 
 export default function Login() {
   const [email, setEmail] = useState('');
