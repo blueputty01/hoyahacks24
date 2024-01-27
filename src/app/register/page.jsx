@@ -11,17 +11,9 @@ export default function Login() {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const handleSignup = async () => {
-    try {
-      await createUserWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div>
-      <h1>Register </h1>
+      <h1>Register</h1>
       <input
         type="text"
         placeholder="email"
@@ -34,7 +26,10 @@ export default function Login() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleSignup}>Register</button>
+      <button onClick={() => createUserWithEmailAndPassword(email, password)}>
+        Register
+      </button>
+      {error && <p>Error</p>}
     </div>
   );
 }

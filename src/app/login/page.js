@@ -15,14 +15,14 @@ export default function Login() {
     useSignInWithEmailAndPassword(auth);
 
   const handleSignin = async () => {
-    try {
-      await signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
+    if (user) {
       router.push('/');
-    } catch (error) {
+    } else {
       console.log(error);
     }
   };
-
+  console.log(error);
   return (
     <div>
       <h1>Login</h1>
@@ -39,6 +39,7 @@ export default function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleSignin}>Log in</button>
+      {error && <p>Error</p>}
     </div>
   );
 }
