@@ -29,12 +29,8 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <div>
-        <h1>Home</h1>
-      </div>
-
-      <div className="chatbox">
-        <div className="scrollbox">{messages_html}</div>
+      <div className={styles.chatbox}>
+        <div className={styles.scrollbox}>{messages_html}</div>
         <Input />
       </div>
     </main>

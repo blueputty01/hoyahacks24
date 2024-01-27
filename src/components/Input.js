@@ -1,17 +1,19 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { messages } from "app/page";
+import { useState, useEffect } from 'react';
+import { messages } from 'app/page';
+
+import { IoMdSend } from 'react-icons/io';
 
 export default function Input() {
   async function postData(
-    url = "localhost:3000/api/llm/route",
+    url = 'localhost:3000/api/llm/route',
     message,
     userId
   ) {
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({ message, userId }),
       });
 
@@ -30,14 +32,14 @@ export default function Input() {
     }
   }
 
-  const [typed_message, setMessage] = useState("");
+  const [typed_message, setMessage] = useState('');
   const handleChange = (event) => {
     setMessage(event.target);
   };
 
   const handleFormSubmit = (event) => {
     let submit_data = event.target.value;
-    let user_id = "0";
+    let user_id = '0';
     POST({ submit_data, user_id });
 
     // TODO
@@ -52,7 +54,9 @@ export default function Input() {
         onChange={handleChange}
       />
 
-      <input type="submit" value=">" onSubmit={handleFormSubmit} />
+      <button type="submit" onSubmit={handleFormSubmit}>
+        <IoMdSend />
+      </button>
     </form>
   );
 }
