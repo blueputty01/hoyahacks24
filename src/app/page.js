@@ -57,9 +57,9 @@ export default function Home() {
         <h1>Home</h1>
       </div>
 
-      <div className="chatbox">
-        <div className="scrollbox">{messages_html}</div>
-        <Input handleFormSubmit={handleFormSubmit} />
+      <div className={styles.chatbox}>
+        <div className={styles.scrollbox}>{messages_html}</div>
+        <Input />
       </div>
     </main>
   );
