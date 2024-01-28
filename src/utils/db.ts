@@ -4,19 +4,18 @@ export interface Env {
   AI: any;
 }
 
-// export async function GET(req: NextRequest) {
-// Replace the uri string with your MongoDB deployment's connection string.
-const uri =
-  'mongodb+srv://ji19283756:16Bp00UEYrv7A7vCANx9@cluster0.3ztx48o.mongodb.net/?retryWrites=true&w=majority';
-
-// Create a new client and connect to MongoDB
-const client = new MongoClient(uri);
-
 export async function push(
   userId_: string,
   message_: string,
   response_: string
 ) {
+  // export async function GET(req: NextRequest) {
+  // Replace the uri string with your MongoDB deployment's connection string.
+  const uri =
+    'mongodb+srv://ji19283756:16Bp00UEYrv7A7vCANx9@cluster0.3ztx48o.mongodb.net/?retryWrites=true&w=majority';
+
+  // Create a new client and connect to MongoDB
+  const client = new MongoClient(uri);
   try {
     // Connect to the "insertDB" database and access its "haiku" collection
     const database = client.db('cluster0');
@@ -40,6 +39,13 @@ export async function push(
 }
 
 export async function pull(user_id: string) {
+  // export async function GET(req: NextRequest) {
+  // Replace the uri string with your MongoDB deployment's connection string.
+  const uri =
+    'mongodb+srv://ji19283756:16Bp00UEYrv7A7vCANx9@cluster0.3ztx48o.mongodb.net/?retryWrites=true&w=majority';
+
+  // Create a new client and connect to MongoDB
+  const client = new MongoClient(uri);
   try {
     // Connect to the "insertDB" database and access its "haiku" collection
     const database = client.db('cluster0');

@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
     ],
   });
 
-  await push(user_id, message, result.response);
+  await push(user_id, message, result.result.response);
 
   return NextResponse.json(result);
 }
