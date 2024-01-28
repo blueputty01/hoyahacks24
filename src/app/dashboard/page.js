@@ -47,9 +47,11 @@ export default function Home() {
 
       const json = await response.json();
 
+      const llmResponse = json.result.response;
+
       if (json) {
         setMessages((oldMessages) => {
-          return [...oldMessages, { message, response: json }];
+          return [...oldMessages, { message, response: llmResponse }];
         });
       }
     } catch (ex) {
