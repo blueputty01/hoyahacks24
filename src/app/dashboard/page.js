@@ -84,8 +84,11 @@ export default function Home() {
             Hello! I&rsquo;m SeCUREPod, a digital assistant who can provide
             understandable, actionable personal security and digital literacy
             guidance. <br></br>This is a free [beta] version and may be subject
-            to time-outs in situations with poor internet. You can find me{" "}
-            <a href="https://hoyahacks24.vercel.app/">here</a>{" "}
+            to time-outs in situations with poor internet. You can find me at{" "}
+            <a href="https://hoyahacks24.vercel.app/">
+              https://hoyahacks24.vercel.app/
+            </a>
+            .{" "}
           </div>
         )}
       </div>
