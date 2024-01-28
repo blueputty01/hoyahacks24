@@ -36,12 +36,14 @@ export default function Home() {
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message, uid }),
       });
 
-      const [result] = (await response.json()).result.response;
+      const json = await response.json();
 
-      if (response.ok) {
+      const [result] = json.result.response;
+
+      if (json.success) {
         setMessages((oldMessages) => [...oldMessages, result.content]);
       }
     } catch (ex) {
