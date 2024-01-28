@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Input from 'components/Input';
 import { useState, useEffect } from 'react';
 import { auth } from 'utils/config';
+import { Fragment } from 'react';
 
 export default function Home() {
   const [user, loading, error] = useAuthState(auth, {});
@@ -40,10 +41,13 @@ export default function Home() {
 
       const json = await response.json();
 
-      const [result] = json.result.response;
+      const result = json.result.response;
 
       if (json.success) {
-        setMessages((oldMessages) => [...oldMessages, result.content]);
+        setMessages((oldMessages) => {
+          console.log(oldMessages);
+          return [...oldMessages, { message, response: result.content }];
+        });
       }
     } catch (ex) {
       console.error(ex);
@@ -58,20 +62,21 @@ export default function Home() {
     setIsLoading(false);
   };
 
+  console.log(JSON.stringify(messages));
   return (
     <main className={styles.main}>
       <div className={styles.chatbox}>
-        <div className={styles.scrollbox}>
-          {messages.map((message, idx) => {
-            return (
-              <div key={idx}>
-                <div className={styles.message}>{message.message}</div>
-                <div className={styles.response}>{message.response}</div>
-              </div>
-            );
-          })}
+        {messages.map((message, idx) => {
+          return (
+            <Fragment key={message._id}>
+              <div className={styles.message}>{message.message}</div>
+              <div className={styles.response}>{message.response}</div>
+            </Fragment>
+          );
+        })}
+        <div className={styles.prompt}>
+          <Input handleFormSubmit={handleFormSubmit} disabled={isLoading} />
         </div>
-        <Input handleFormSubmit={handleFormSubmit} disabled={isLoading} />
       </div>
     </main>
   );

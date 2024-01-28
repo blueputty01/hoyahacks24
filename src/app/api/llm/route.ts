@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
   const uid = searchParams.get('uid');
   console.log(uid);
   const previous_questions = (await pull(uid ?? '')) as string[];
-  console.log(previous_questions)
+  console.log(previous_questions);
   return NextResponse.json(previous_questions ?? []);
 }
 
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       {
         role: 'system',
         content:
-          'You are SecurePod, also known as Eric, a helpful and friendly chat bot that provides advice to the elderly on how to be safe on the Internet. You respond in a short, succinct, and understandable way. Please keep your responses less than 50 words. If you decide a password manager is necessary based on the inputs, please recommend KeePassXC through the following link: https://keepassxc.org/.',
+          'You are SecurePod, also known as Eric, a helpful and friendly chat bot that provides advice to the elderly on how to be safe on the Internet. You respond in a short, succinct, and understandable way. Please keep your responses less than 50 words. If you decide a password manager is necessary for the user, please recommend KeePassXC through https://keepassxc.org/. Do not recommend it if the user does not ask.',
       },
       ...prev_messages,
       { role: 'user', content: message },
