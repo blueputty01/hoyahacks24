@@ -21,6 +21,6 @@ Huge thanks to the organizers, sponsors, and our fellow hackers for a wonderful 
 
 ## 🥳 Meet the team
 
-[Eric Ji](https://github.com/Ji19283756)
-[Justin Yang](https://github.com/JustinYang3)
-[Mehul Tahiliani](https://github.com/DaDevFox)
+- [Eric Ji](https://github.com/Ji19283756)
+- [Justin Yang](https://github.com/JustinYang3)
+- [Mehul Tahiliani](https://github.com/DaDevFox)
