@@ -65,17 +65,13 @@ export default function Home() {
           {messages.map((message, idx) => {
             return (
               <div key={idx}>
-                <span className={styles.message}>{message.message}</span>
-                <span className={styles.response}>{message.response}</span>
+                <div className={styles.message}>{message.message}</div>
+                <div className={styles.response}>{message.response}</div>
               </div>
             );
           })}
         </div>
-        <Input
-          handleFormSubmit={handleFormSubmit}
-          disabled={isLoading}
-          className={styles.input}
-        />
+        <Input handleFormSubmit={handleFormSubmit} disabled={isLoading} />
       </div>
     </main>
   );
