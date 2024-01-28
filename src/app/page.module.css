@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-  min-height: 100vh;
+  flex-grow: 1;
 }
 
 .description {
@@ -79,7 +79,7 @@
     font-weight: 700;
 
     /* gradient text clip*/
-    background: linear-gradient(45deg, #002aff, #00ddff);
+    background: linear-gradient(45deg, #002aff, #b4b1f8);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
