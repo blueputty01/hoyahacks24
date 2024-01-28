@@ -10,6 +10,8 @@ import { useRouter } from 'next/navigation';
 import { auth } from 'utils/config';
 import Image from 'next/image';
 
+import Link from 'next/link';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -72,9 +74,19 @@ export default function Login() {
         </span>
 
         <button onClick={handleSignin}>Log in</button>
+        <p className={styles.error}>
+          {error ? 'Incorrect username or password' : ''}
+        </p>
+
         <a href="#" className={styles.forgot}>
           I forgot my password
         </a>
+        <p>
+          Don&rsquo;t have an account?{' '}
+          <Link href="/register" style={{ textDecoration: 'underline' }}>
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

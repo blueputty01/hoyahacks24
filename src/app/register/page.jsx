@@ -1,20 +1,24 @@
-"use client";
+'use client';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
-import bg from "/public/background.png";
+import bg from '/public/background.png';
 
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useState } from "react";
-import { auth } from "utils/config";
-import Image from "next/image";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useState } from 'react';
+import { auth } from 'utils/config';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+
+  const router = useRouter();
 
   return (
     <div className={styles.register}>
@@ -24,10 +28,10 @@ export default function Login() {
         fill
         sizes="100vw"
         style={{
-          position: "absolute",
+          position: 'absolute',
           zIndex: -1,
-          objectFit: "cover",
-          objectPosition: "center",
+          objectFit: 'cover',
+          objectPosition: 'center',
         }}
       />
       <div>
@@ -46,7 +50,22 @@ export default function Login() {
           className={styles.text}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={createUserWithEmailAndPassword}>Register</button>
+        <button
+          onClick={() => {
+            createUserWithEmailAndPassword();
+            if (!error) {
+              router.push('/login');
+            }
+          }}
+        >
+          Register
+        </button>
+        <p>
+          Already have an account?{' '}
+          <Link href="/login" style={{ textDecoration: 'underline' }}>
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );
