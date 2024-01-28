@@ -45,12 +45,11 @@ export default function Home() {
 
       const json = await response.json();
 
-      const result = json.result.response;
-
-      if (json.success) {
+      if (json) {
         setMessages((oldMessages) => {
           console.log(oldMessages);
-          return [...oldMessages, { message, response: result.content }];
+          console.log(result);
+          return [...oldMessages, { message, response: json }];
         });
       }
     } catch (ex) {
