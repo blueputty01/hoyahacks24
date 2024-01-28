@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import styles from './page.module.css';
+import styles from "./page.module.css";
 
-import bg from '/public/background.png';
+import bg from "/public/background.png";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import * as Realm from 'realm-web';
+import * as Realm from "realm-web";
 const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const router = useRouter();
 
@@ -28,10 +28,10 @@ export default function Login() {
         fill
         sizes="100vw"
         style={{
-          position: 'absolute',
+          position: "absolute",
           zIndex: -1,
-          objectFit: 'cover',
-          objectPosition: 'center',
+          objectFit: "cover",
+          objectPosition: "center",
         }}
       />
       <div>
@@ -54,7 +54,7 @@ export default function Login() {
           onClick={async () => {
             try {
               await app.emailPasswordAuth.registerUser({ email, password });
-              router.push('/login');
+              router.push("/login");
             } catch (error) {
               setError(error.message);
             }
@@ -63,12 +63,12 @@ export default function Login() {
           Register
         </button>
         <p>
-          Already have an account?{' '}
-          <Link href="/login" style={{ textDecoration: 'underline' }}>
+          Already have an account?{" "}
+          <Link href="/login" style={{ textDecoration: "underline" }}>
             Login
           </Link>
         </p>
-        {error && <p className={styles.error}>{error}</p>}
+        {error && <p className={styles.error}>{error.split(":")[2]}</p>}
       </div>
     </div>
   );

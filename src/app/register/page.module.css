@@ -56,4 +56,6 @@
 .error {
   color: red;
   height: 1rem;
+  font-size: 15px;
+  text-transform: capitalize;
 }
