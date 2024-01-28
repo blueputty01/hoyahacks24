@@ -12,6 +12,13 @@
 .chatbox
 {
   
+  button{
+    max-width: 10rem;
+    width: 5rem;
+    outline: none;
+    border: none;
+  }
+
   height: 60rem;
   max-width: 80rem;
   width: 100%;
@@ -62,12 +69,9 @@
   flex-direction: column;
 }
 
-#submit-button{
-  max-width: 10rem;
-  width: 5rem;
-  outline: none;
-  border: none;
-}
+
+
+
 
 .input
 {
