@@ -1,17 +1,22 @@
 'use client';
 import styles from './page.module.css';
 
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Input from 'components/Input';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { auth } from 'utils/config';
 
 export default function Home() {
+  const [user, loading, error] = useAuthState(auth, {});
   const [messages, setMessages] = useState([]);
   const API_URL = '/api/llm';
 
   useEffect(() => {
     async function fetchData() {
+      if (!user) return;
+
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}?uid=${user.uid}`);
         const [result] = (await response.json()).result.response;
 
         if (response.ok) {
@@ -23,10 +28,12 @@ export default function Home() {
     }
 
     fetchData();
-  }, []);
+  }, [user]);
+
+  const uid = user?.uid;
 
   async function postData(message, userId) {
-    messages.push({ user_id: 'ayang130@terpmail.umd.edu', content: message });
+    messages.push({ user_id: uid, content: message });
 
     try {
       const response = await fetch(API_URL, {

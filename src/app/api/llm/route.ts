@@ -24,6 +24,14 @@ async function run(model: string, input: any) {
   return result;
 }
 
+export async function GET(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
+  const uid = searchParams.get('uid');
+  const previous_questions = (await pull(uid ?? '')) as string[];
+
+  return NextResponse.json(previous_questions);
+}
+
 export async function POST(req: NextRequest) {
   const request = JSON.parse(await req.text()) as any;
   const { message, user_id } = request;

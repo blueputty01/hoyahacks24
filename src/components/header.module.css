@@ -1,10 +1,6 @@
 .login {
   margin-left: auto;
-  background-color: #0d29f5;
-  color: hsl(233, 20%, 91%);
   border-radius: 8px;
   font-size: 1rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
-
-  box-shadow: 10px 10px 81px -8px rgba(13, 41, 245, 0.75);
 }
