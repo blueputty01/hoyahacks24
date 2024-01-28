@@ -72,7 +72,7 @@ export default function Home() {
       <div className={styles.chatbox}>
         {messages.map((message) => {
           return (
-            <Fragment key={message._id}>
+            <Fragment key={message._id ?? message.message.substring(0, 5)}>
               <div className={styles.message}>{message.message}</div>
               <div className={styles.response}>{message.response}</div>
             </Fragment>
