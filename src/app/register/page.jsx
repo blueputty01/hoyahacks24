@@ -52,10 +52,10 @@ export default function Login() {
         />
         <button
           onClick={() => {
-            createUserWithEmailAndPassword();
-            if (!error) {
-              router.push('/login');
-            }
+            createUserWithEmailAndPassword(email, password);
+            // if (!error) {
+            //   router.push('/login');
+            // }
           }}
         >
           Register

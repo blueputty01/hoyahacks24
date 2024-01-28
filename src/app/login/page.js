@@ -23,7 +23,7 @@ export default function Login() {
 
   const handleSignin = async () => {
     await signInWithEmailAndPassword(email, password);
-    if (user) {
+    if (!error) {
       router.push('/');
     } else {
       console.log(error);
@@ -73,7 +73,9 @@ export default function Login() {
           </label>
         </span>
 
-        <button onClick={handleSignin}>Log in</button>
+        <button onClick={handleSignin} disabled={loading}>
+          Log in
+        </button>
         <p className={styles.error}>
           {error ? 'Incorrect username or password' : ''}
         </p>
