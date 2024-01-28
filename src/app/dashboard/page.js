@@ -40,7 +40,7 @@ export default function Home() {
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        body: JSON.stringify({ message, userId: uid }),
+        body: JSON.stringify({ message, userId: user }),
       });
 
       const json = await response.json();
@@ -69,7 +69,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.chatbox}>
-        {messages.map((message, idx) => {
+        {messages.map((message) => {
           return (
             <Fragment key={message._id}>
               <div className={styles.message}>{message.message}</div>
