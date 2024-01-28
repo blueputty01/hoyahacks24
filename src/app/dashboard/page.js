@@ -60,11 +60,9 @@ export default function Home() {
         <div className={styles.scrollbox}>
           {messages.map((message, idx) => {
             return (
-              <div
-                key={idx}
-                className={idx % 2 == 0 ? 'message bot' : 'message user'}
-              >
-                {message}
+              <div key={idx}>
+                <span className={styles.message}>{message.message}</span>
+                <span className={styles.response}>{message.response}</span>
               </div>
             );
           })}
