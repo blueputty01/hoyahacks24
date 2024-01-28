@@ -24,7 +24,7 @@ export default function Login() {
   const handleSignin = async () => {
     await signInWithEmailAndPassword(email, password);
     if (!error) {
-      router.push('/');
+      router.push('/dashboard');
     } else {
       console.log(error);
     }
