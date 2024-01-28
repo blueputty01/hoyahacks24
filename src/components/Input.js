@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { messages } from "app/dashboard/page";
 
 import { IoMdSend } from "react-icons/io";
 
-export default function Input({ handleFormSubmit }) {
+export default function Input({ handleFormSubmit, disabled }) {
   const [message, setMessage] = useState("");
 
   const handleChange = (event) => {
@@ -15,6 +14,7 @@ export default function Input({ handleFormSubmit }) {
   return (
     <div className="form-container">
       <input
+        disabled={disabled}
         type="text"
         id="chatbot-message-input"
         className="input"
@@ -23,8 +23,9 @@ export default function Input({ handleFormSubmit }) {
       />
 
       <button
+        disabled={disabled}
         className="submit-button"
-        onSubmit={() => {
+        onClick={() => {
           handleFormSubmit(message);
           setMessage("");
         }}

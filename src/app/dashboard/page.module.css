@@ -10,9 +10,10 @@
 
 
 .chatbox{
+  min-height: 2rem;
   height: 10rem;
   background-color: rgba(240, 240, 240, 100);
-  
+    
 }
 
 .scrollbox{

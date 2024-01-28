@@ -2,51 +2,14 @@
 import styles from "./page.module.css";
 
 import Input from "components/Input";
-
-const messages = [
-  {
-    id: 0,
-    content: "hi I'm a message",
-  },
-  {
-    id: 0,
-    content: "hi I'm a message",
-  },
-  {
-    id: 0,
-    content: "hi I'm a message",
-  },
-  {
-    id: 0,
-    content: "hi I'm a message",
-  },
-  {
-    id: 1,
-    content: "hi I'm a message",
-  },
-  {
-    id: 0,
-    content: "hi I'm a message",
-  },
-  {
-    id: 0,
-    content: "hi I'm a message",
-  },
-  {
-    id: 0,
-    content: "hi I'm a message",
-  },
-  {
-    id: 0,
-    content: "hi I'm a message",
-  },
-];
+import { useState } from "react";
 
 export default function Home() {
-  async function postData(message, userId) {
-    messages.push({ id: 0, content: message });
+  const [messages, setMessages] = useState([]);
 
-    const url = "localhost:3000/api/llm/route";
+  async function postData(message, userId) {
+    messages.push({ user_id: "ayang130@terpmail.umd.edu", content: message });
+    const url = "/api/llm";
 
     try {
       const response = await fetch(url, {
@@ -54,53 +17,44 @@ export default function Home() {
         body: JSON.stringify({ message, userId }),
       });
 
-      if (response.ok) {
-        messages.push({
-          id: 0,
-          content: (await response.json()).result.response,
-        });
+      const [result] = (await response.json()).result.response;
 
-        console.log(response);
-      } else {
+      console.log(result);
+
+      if (response.ok) {
+        setMessages((oldMessages) => [...oldMessages, result.content]);
       }
     } catch (ex) {
-      messages.push({
-        id: 0,
-        content: ex,
-      });
+      console.error(ex);
     }
   }
 
+  console.log(messages);
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleFormSubmit = (message) => {
-    messages.push({
-      id: 0,
-      content: "message procwessing",
-    });
-    postData(submit_data, 0);
-    messages.push({
-      id: 0,
-      content: "message sent",
-    });
+    setIsLoading(true);
+    postData(message, 0);
+    setIsLoading(false);
   };
-
-  var counter = 0;
-
-  const messages_html = messages.map((message, idx) => {
-    return (
-      <div
-        key={counter++}
-        className={message.id != 0 ? "message bot" : "message user"}
-      >
-        {message.content}
-      </div>
-    );
-  });
 
   return (
     <main className={styles.main}>
       <div className={styles.chatbox}>
-        <div className={styles.scrollbox}>{messages_html}</div>
-        <Input handleFormSubmit={handleFormSubmit} />
+        <div className={styles.scrollbox}>
+          {messages.map((message, idx) => {
+            return (
+              <div
+                key={idx}
+                className={idx % 2 == 0 ? "message bot" : "message user"}
+              >
+                {message}
+              </div>
+            );
+          })}
+        </div>
+        <Input handleFormSubmit={handleFormSubmit} disabled={isLoading} />
       </div>
     </main>
   );
