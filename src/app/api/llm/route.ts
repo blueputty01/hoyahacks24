@@ -25,8 +25,9 @@ async function run(model: string, input: any) {
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const uid = searchParams.get('uid');
+  console.log(uid);
   const previous_questions = (await pull(uid ?? '')) as string[];
-
+  console.log(previous_questions)
   return NextResponse.json(previous_questions ?? []);
 }
 

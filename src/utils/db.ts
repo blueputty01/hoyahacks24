@@ -70,6 +70,7 @@ export async function pull(user_id: string) {
 
     // Print returned documents
     for await (const doc of cursor) {
+      console.log(doc);
       questions.push(doc);
     }
   } finally {
