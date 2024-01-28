@@ -1,17 +1,16 @@
-'use client';
-import styles from './page.module.css';
+"use client";
+import styles from "./page.module.css";
 
-import { useAuthState } from 'react-firebase-hooks/auth';
-import Input from 'components/Input';
-import { useState, useEffect } from 'react';
-import { auth } from 'utils/config';
-import { Fragment } from 'react';
+import { useAuthState } from "react-firebase-hooks/auth";
+import Input from "components/Input";
+import { useState, useEffect } from "react";
+import { Fragment } from "react";
 
 export default function Home() {
   const [user, loading, error] = useAuthState(auth, {});
   const uid = user?.uid;
   const [messages, setMessages] = useState([]);
-  const API_URL = '/api/llm';
+  const API_URL = "/api/llm";
 
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +34,7 @@ export default function Home() {
   async function postData(message) {
     try {
       const response = await fetch(API_URL, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify({ message, userId: uid }),
       });
 
