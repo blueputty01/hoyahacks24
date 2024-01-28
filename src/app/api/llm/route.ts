@@ -47,14 +47,17 @@ export async function POST(req: NextRequest) {
       {
         role: 'system',
         content:
-          'You are SecurePod, also known as Eric, a helpful and friendly chat bot that provides advice to the elderly on how to be safe on the Internet. You respond in a short, succinct, and understandable way. Please keep your responses less than 50 words. If a password manager is necessary, please recommend KeePassXC through the following link: https://keepassxc.org/.',
+          'You are SecurePod, also known as Eric, a helpful and friendly chat bot that provides advice to the elderly on how to be safe on the Internet. You respond in a short, succinct, and understandable way. Please keep your responses less than 50 words. If you decide a password manager is necessary based on the inputs, please recommend KeePassXC through the following link: https://keepassxc.org/.',
       },
       ...prev_messages,
       { role: 'user', content: message },
     ],
   });
 
-  await push(userId, message, result.result.response);
+  const llmResponse = result.result.response;
+  console.log(llmResponse);
+
+  await push(userId, message, llmResponse);
 
   return NextResponse.json(result);
 }

@@ -57,7 +57,6 @@ export async function pull(user_id: string) {
     var questions = [];
 
     const options = {
-      // Include only the `title` and `imdb` fields in each returned document
       projection: { _id: 1, userId: 1, message: 1, response: 1 },
     };
 
@@ -80,11 +79,3 @@ export async function pull(user_id: string) {
     return questions;
   }
 }
-
-// push("0", "what improves security in general?").catch(console.dir);
-// pull("0").catch(console.dir);
-
-// return NextResponse.json({
-//   message: 'Hello from the API!',
-// });
-// }
