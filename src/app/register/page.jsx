@@ -4,9 +4,7 @@ import styles from './page.module.css';
 
 import bg from '/public/background.png';
 
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useState } from 'react';
-import { auth } from 'utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -14,9 +12,6 @@ import { useRouter } from 'next/navigation';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
 
   const router = useRouter();
 
@@ -51,8 +46,14 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          onClick={() => {
-            createUserWithEmailAndPassword(email, password);
+          onClick={async () => {
+            const result = await fetch('/api/users/register', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email, password }),
+            });
             // if (!error) {
             //   router.push('/login');
             // }
