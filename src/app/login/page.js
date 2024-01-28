@@ -75,10 +75,10 @@ export default function Login() {
           <input
             type="checkbox"
             id="remember"
-            name="rembember"
+            name="remember"
             className={styles.check}
           />
-          <label for="remember" className={styles.check}>
+          <label htmlFor="remember" className={styles.check}>
             {' '}
             Remember me
           </label>

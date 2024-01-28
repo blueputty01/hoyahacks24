@@ -1,23 +1,28 @@
-"use client";
-import styles from "./page.module.css";
+'use client';
+import styles from './page.module.css';
 
-import { useAuthState } from "react-firebase-hooks/auth";
-import Input from "components/Input";
-import { useState, useEffect } from "react";
-import { Fragment } from "react";
+import Input from 'components/Input';
+import { useState, useEffect, useMemo } from 'react';
+import { Fragment } from 'react';
+
+import * as Realm from 'realm-web';
+const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
 
 export default function Home() {
-  const [user, loading, error] = useAuthState(auth, {});
-  const uid = user?.uid;
+  const { id: user } = useMemo(() => {
+    const id = Object.keys(app.allUsers);
+    return app.allUsers[id];
+  }, []);
+
   const [messages, setMessages] = useState([]);
-  const API_URL = "/api/llm";
+  const API_URL = '/api/llm';
 
   useEffect(() => {
     async function fetchData() {
       if (!user) return;
 
       try {
-        const response = await fetch(`${API_URL}?uid=${user.uid}`);
+        const response = await fetch(`${API_URL}?uid=${user}`);
         const result = (await response.json()) ?? [];
 
         if (response.ok) {
@@ -34,7 +39,7 @@ export default function Home() {
   async function postData(message) {
     try {
       const response = await fetch(API_URL, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({ message, userId: uid }),
       });
 
