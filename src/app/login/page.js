@@ -21,8 +21,6 @@ export default function Login() {
 
   const router = useRouter();
 
-  // FLAG
-
   const handleSignin = async () => {
     const credentials = Realm.Credentials.emailPassword(email, password);
 
