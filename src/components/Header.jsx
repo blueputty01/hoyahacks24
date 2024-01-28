@@ -1,12 +1,9 @@
-'use client';
+"use client";
+import { FaUserLock } from "react-icons/fa";
+import styles from "./header.module.css";
+import Link from "next/link";
 
-import styles from './header.module.css';
-import Link from 'next/link';
-
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from 'utils/config';
-
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname();
@@ -14,10 +11,13 @@ export default function Header() {
 
   return (
     <header>
-      <Link href="/">SeCUREpod</Link>{' '}
-      {pathname !== '/login' && (
+      <FaUserLock size={20} className={styles.logo} />
+      <Link href="/">
+        <b>SeCUREpod</b>
+      </Link>{" "}
+      {pathname !== "/login" && pathname !== "/dashboard" && (
         <Link href="/login" className={styles.login}>
-          {user ? user.email : 'Log in'}
+          {user ? user.email : "Log in"}
         </Link>
       )}
     </header>

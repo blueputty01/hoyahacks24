@@ -4,3 +4,9 @@
   font-size: 1rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
+
+.logo {
+  color: #002aff;
+  position: relative;
+  margin-right: 0.5rem;
+}
