@@ -54,10 +54,10 @@ export async function POST(req: NextRequest) {
     ],
   });
 
-  const llmResponse = result.result.response;
-  console.log(llmResponse);
-
-  await push(userId, message, llmResponse);
+  if (result.success) {
+    const llmResponse = result.result.response;
+    await push(userId, message, llmResponse);
+  }
 
   return NextResponse.json(result);
 }
