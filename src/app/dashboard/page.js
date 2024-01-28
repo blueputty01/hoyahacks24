@@ -74,9 +74,9 @@ export default function Home() {
             </Fragment>
           );
         })}
-        <div className={styles.prompt}>
-          <Input handleFormSubmit={handleFormSubmit} disabled={isLoading} />
-        </div>
+      </div>
+      <div className={styles.prompt}>
+        <Input handleFormSubmit={handleFormSubmit} disabled={isLoading} />
       </div>
     </main>
   );
