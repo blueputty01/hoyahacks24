@@ -8,6 +8,8 @@ import { auth } from 'utils/config';
 
 export default function Home() {
   const [user, loading, error] = useAuthState(auth, {});
+  const uid = user?.uid;
+  console.log(uid);
   const [messages, setMessages] = useState([]);
   const API_URL = '/api/llm';
 
@@ -17,10 +19,10 @@ export default function Home() {
 
       try {
         const response = await fetch(`${API_URL}?uid=${user.uid}`);
-        const [result] = (await response.json()).result.response;
+        const result = (await response.json()) ?? [];
 
         if (response.ok) {
-          setMessages((oldMessages) => [...oldMessages, result.content]);
+          setMessages(result);
         }
       } catch (ex) {
         console.error(ex);
@@ -30,10 +32,8 @@ export default function Home() {
     fetchData();
   }, [user]);
 
-  const uid = user?.uid;
-
   async function postData(message, userId) {
-    messages.push({ user_id: uid, content: message });
+    messages.push({ userId: uid, content: message });
 
     try {
       const response = await fetch(API_URL, {
@@ -50,8 +50,6 @@ export default function Home() {
       console.error(ex);
     }
   }
-
-  console.log(messages);
 
   const [isLoading, setIsLoading] = useState(false);
 

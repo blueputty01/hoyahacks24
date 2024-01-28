@@ -26,7 +26,7 @@ export default function Login() {
     if (!error) {
       router.push('/dashboard');
     } else {
-      console.log(error);
+      console.error(error);
     }
   };
 
