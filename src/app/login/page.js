@@ -29,7 +29,7 @@ export default function Login() {
       console.log(error);
     }
   };
-  console.log(error);
+
   return (
     <div className={styles.login}>
       <Image
