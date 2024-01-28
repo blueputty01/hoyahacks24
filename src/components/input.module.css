@@ -10,7 +10,7 @@
   flex-basis: 100%;
   padding: 0.5rem;
   border-radius: 8px 0 0 8px;
-  border: none;
+  /* border: none; */
 }
 .buttonClassName {
   background-color: #002aff;
