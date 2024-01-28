@@ -1,0 +1,24 @@
+.formcontainer {
+  display: flex;
+  height: 3rem;
+}
+
+.textboxClassName {
+  flex-basis: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+.buttonClassName {
+  background-color: #002aff;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #3e3e3e00;
+}
+
+.buttonClassName button:disabled {
+  background-color: hsl(212, 100%, 29%);
+}
+
+.buttonClassName button:hover {
+  background-color: rgb(42, 116, 255);
+}
