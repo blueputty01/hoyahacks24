@@ -1,25 +1,40 @@
-"use client";
-import styles from "./page.module.css";
+'use client';
+import styles from './page.module.css';
 
-import Input from "components/Input";
-import { useState } from "react";
+import Input from 'components/Input';
+import { useState } from 'react';
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
+  const API_URL = '/api/llm';
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(API_URL);
+        const [result] = (await response.json()).result.response;
+
+        if (response.ok) {
+          setMessages((oldMessages) => [...oldMessages, result.content]);
+        }
+      } catch (ex) {
+        console.error(ex);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   async function postData(message, userId) {
-    messages.push({ user_id: "ayang130@terpmail.umd.edu", content: message });
-    const url = "/api/llm";
+    messages.push({ user_id: 'ayang130@terpmail.umd.edu', content: message });
 
     try {
-      const response = await fetch(url, {
-        method: "POST",
+      const response = await fetch(API_URL, {
+        method: 'POST',
         body: JSON.stringify({ message, userId }),
       });
 
       const [result] = (await response.json()).result.response;
-
-      console.log(result);
 
       if (response.ok) {
         setMessages((oldMessages) => [...oldMessages, result.content]);
@@ -45,11 +60,9 @@ export default function Home() {
         <div className={styles.scrollbox}>
           {messages.map((message, idx) => {
             return (
-              <div
-                key={idx}
-                className={idx % 2 == 0 ? "message bot" : "message user"}
-              >
-                {message}
+              <div key={idx}>
+                <span className={styles.message}>{message.message}</span>
+                <span className={styles.response}>{message.response}</span>
               </div>
             );
           })}

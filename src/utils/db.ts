@@ -1,18 +1,21 @@
 import { MongoClient } from 'mongodb';
-import { NextRequest, NextResponse } from 'next/server';
 
 export interface Env {
   AI: any;
 }
 
-// export async function GET(req: NextRequest) {
-// Replace the uri string with your MongoDB deployment's connection string.
-const uri = 'mongodb+srv://ji19283756:16Bp00UEYrv7A7vCANx9@cluster0.3ztx48o.mongodb.net/?retryWrites=true&w=majority';
+export async function push(
+  userId_: string,
+  message_: string,
+  response_: string
+) {
+  // export async function GET(req: NextRequest) {
+  // Replace the uri string with your MongoDB deployment's connection string.
+  const uri =
+    'mongodb+srv://ji19283756:16Bp00UEYrv7A7vCANx9@cluster0.3ztx48o.mongodb.net/?retryWrites=true&w=majority';
 
-// Create a new client and connect to MongoDB
-const client = new MongoClient(uri);
-
-export async function push(userId_: string, message_: string, response_: string) {
+  // Create a new client and connect to MongoDB
+  const client = new MongoClient(uri);
   try {
     // Connect to the "insertDB" database and access its "haiku" collection
     const database = client.db('cluster0');
@@ -22,7 +25,7 @@ export async function push(userId_: string, message_: string, response_: string)
     const doc = {
       userId: userId_,
       message: message_,
-      response: response_
+      response: response_,
     };
     // Insert the defined document into the "haiku" collection
     const result = await people.insertOne(doc);
@@ -34,8 +37,15 @@ export async function push(userId_: string, message_: string, response_: string)
     await client.close();
   }
 }
-  
+
 export async function pull(user_id: string) {
+  // export async function GET(req: NextRequest) {
+  // Replace the uri string with your MongoDB deployment's connection string.
+  const uri =
+    'mongodb+srv://ji19283756:16Bp00UEYrv7A7vCANx9@cluster0.3ztx48o.mongodb.net/?retryWrites=true&w=majority';
+
+  // Create a new client and connect to MongoDB
+  const client = new MongoClient(uri);
   try {
     // Connect to the "insertDB" database and access its "haiku" collection
     const database = client.db('cluster0');
@@ -51,12 +61,12 @@ export async function pull(user_id: string) {
       projection: { _id: 0, userId: 1, message: 1 },
     };
 
-    // Execute query 
+    // Execute query
     const cursor = people.find(query, options);
 
     // Print a message if no documents were found
     if ((await people.countDocuments(query)) === 0) {
-      console.log("No documents found!");
+      console.log('No documents found!');
     }
 
     // Print returned documents
@@ -71,10 +81,10 @@ export async function pull(user_id: string) {
   }
 }
 
-  // push("0", "what improves security in general?").catch(console.dir);
-  // pull("0").catch(console.dir); 
+// push("0", "what improves security in general?").catch(console.dir);
+// pull("0").catch(console.dir);
 
-  // return NextResponse.json({
-  //   message: 'Hello from the API!',
-  // });
+// return NextResponse.json({
+//   message: 'Hello from the API!',
+// });
 // }
