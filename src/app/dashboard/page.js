@@ -70,17 +70,21 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.chatbox}>
-        {messages.map((message) => {
-          return (
-            <Fragment key={message._id ?? message.message.substring(0, 5)}>
-              <div className={styles.message}>{message.message}</div>
-              <div className={styles.response}>{message.response}</div>
-            </Fragment>
-          );
-        })}
+        {messages.length ? (
+          messages.map((message) => {
+            return (
+              <Fragment key={message._id ?? message.message.substring(0, 5)}>
+                <div className={styles.message}>{message.message}</div>
+                <div className={styles.response}>{message.response}</div>
+              </Fragment>
+            );
+          })
+        ) : (
+          <div>Hello! I&rsquo;m </div>
+        )}
       </div>
       <div className={styles.prompt}>
-        <Input handleFormSubmit={handleFormSubmit} disabled={isLoading} />
+        <Input handleFormSubmit={handleFormSubmit} isDisabled={isLoading} />
       </div>
     </main>
   );
