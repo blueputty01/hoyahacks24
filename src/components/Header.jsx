@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const pathname = usePathname();
   const [user, loading, error] = useAuthState(auth, {});
+  console.log(user);
 
   return (
     <header>
@@ -17,7 +18,7 @@ export default function Header() {
       <Link href="/">
         <b>SeCUREpod</b>
       </Link>{' '}
-      {pathname !== '/login' && pathname !== '/dashboard' && (
+      {pathname !== '/login' && (
         <Link href="/login" className={styles.login}>
           {user ? user.email : 'Log in'}
         </Link>
