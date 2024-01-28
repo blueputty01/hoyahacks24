@@ -18,7 +18,7 @@ export default function Header() {
     return app.allUsers[id];
   }, []);
 
-  const email = user._profile.data.email;
+  const email = user?._profile.data.email;
 
   return (
     <header>
