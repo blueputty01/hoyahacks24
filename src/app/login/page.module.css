@@ -25,7 +25,6 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 12px;
   padding: 3rem;
-  width: 30rem;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -58,10 +57,19 @@
   transition-duration: 0.4s;
 }
 
+.login button:disabled {
+  background-color: hsl(212, 100%, 29%);
+}
+
 .login button:hover {
   background-color: rgb(0, 89, 255);
 }
 
 .forgot {
   text-decoration: underline;
+}
+
+.error {
+  color: red;
+  height: 1rem;
 }
