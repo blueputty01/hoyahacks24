@@ -1,12 +1,12 @@
-'use client';
-import styles from './page.module.css';
+"use client";
+import styles from "./page.module.css";
 
-import Input from 'components/Input';
-import { useState } from 'react';
+import Input from "components/Input";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
-  const API_URL = '/api/llm';
+  const API_URL = "/api/llm";
 
   useEffect(() => {
     async function fetchData() {
@@ -26,11 +26,11 @@ export default function Home() {
   }, []);
 
   async function postData(message, userId) {
-    messages.push({ user_id: 'ayang130@terpmail.umd.edu', content: message });
+    messages.push({ user_id: "ayang130@terpmail.umd.edu", content: message });
 
     try {
       const response = await fetch(API_URL, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify({ message, userId }),
       });
 
@@ -67,7 +67,11 @@ export default function Home() {
             );
           })}
         </div>
-        <Input handleFormSubmit={handleFormSubmit} disabled={isLoading} />
+        <Input
+          handleFormSubmit={handleFormSubmit}
+          disabled={isLoading}
+          className={styles.input}
+        />
       </div>
     </main>
   );

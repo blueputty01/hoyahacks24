@@ -6,187 +6,93 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
-}
-
-.chatbox-input
-{
-  width: 100%;
-  height: 56px;
-  border-radius: 4px;
-  padding-left: 40px;
-  padding-right: 40px;
-  position: relative;
-  background-color: rgba(255,255,255,0.3);
-  transition: 0.3s all;  
+  width: 100vw;
 }
 
 .chatbox
 {
-  width: 80rem;
+  
   height: 60rem;
   max-width: 80rem;
-
-  .message
-  {
-    width:100%;
-    text-size-adjust: auto;
-    padding: 2rem 2rem 2rem 2rem;
-
-
-    &.bot
-    {
-      background-color: rgba(rgba(101, 9, 200, 100));
-      text-align:left;
-    }
-
-    &.user
-    {
-      text-align:right;
-      /* background-color: rgba() */
-    }
-  }
-
-  .scrollbox
-  {
-    width:100%;
-    background-color: rgba(240, 240, 240, 100);
-    max-height: 40rem;
-    height: 100%;
-    overflow-y: auto;
-  }
-
-  .input
-  {
-
-    border: none;
-    background-color: rgba(255, 255, 255, 0.45);
-
-    padding: 2rem, 4rem, 2rem, 4rem;
-    width: 100%;
-    height: 3rem;
-
-    transition: 0.3s all;
-  }
-
-  .input:hover
-  {
-    box-shadow: 0rem 0.25rem 1.25rem 0rem rgba(0, 0, 0, 0.05);
-  }
-
-  .input:focus
-  {
-    outline:none;
-    border: none;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .chatbox {
-  width: 80rem;
-  height: 60rem;
-  max-width: 80rem;
+  width: 100%;
+  
   display: flex;
   flex-direction: column;
 
-  .message {
+  .message
+  {
     max-width: 100%;
+    width: fit-content;
     text-size-adjust: auto;
     padding: 1rem 1rem 1rem 1rem;
     margin: 0.5rem 0.5rem 0.5rem 0.5rem;
     border-radius: 1rem;
 
-    &.bot {
+    &.bot
+    {
       color: white;
+      align-self: flex-start;
+
       background-color: rgba(101, 9, 200, 100);
-      align-self: left;
+      text-align:left;
     }
 
-    &.user {
+    &.user
+    {
       display: flex;
       align-self: right;
+        
+      text-align:right;
+      background-color: rgba(255, 255, 255, 255)
     }
   }
 
-  .scrollbox {
-    width: 100%;
+  .scrollbox
+  { 
     background-color: rgba(240, 240, 240, 100);
     max-height: 40rem;
     height: 100%;
     overflow-y: auto;
   }
-  
-  .form-container{
-    display: flex;
-  }
 
-  .input {
-    max-width: 100%;
-    width: 100%;
-    height: 56px;
-    border-radius: 4px;
-    padding-left: 40px;
-    padding-right: 40px;
-    position: relative;
-    
-    border: none;
-    background-color: rgba(255, 255, 255, 0.45);
-
-    padding: 2rem, 4rem, 2rem, 4rem;
-    height: 3rem;
-
-    transition: 0.3s all;
-  }
-
-  .input:hover {
-    box-shadow: 0rem 0.25rem 1.25rem 0rem rgba(0, 0, 0, 0.05);
-  }
-
-  .input:focus {
-    outline: none;
-    border: none;
-  }
-
-  .submit-button{
-    max-width: 10rem;
-    width: 5rem;
-    outline: none;
-    border: none;
-  }
 }
 
-
-.scrollbox {
-  width: 100%;
-  background-color: rgba(240, 240, 240, 100);
-  max-height: 40rem;
-  height: 100%;
-  overflow-y: auto;
+.form-container{
+  display: flex;
+  flex-direction: column;
 }
 
-.chatbox:hover {
-  box-shadow: 0rem 0.25rem 1.25rem 0rem rgba(0, 0, 0, 0.05);
-  background-color: rgba(225, 225, 225, 1);
-  outline: none;
-}
-
-.chatbox:focus {
+#submit-button{
+  max-width: 10rem;
+  width: 5rem;
   outline: none;
   border: none;
-} */
+}
+
+.input
+{
+  min-height: 56px;
+  border-radius: 4px;
+  position: relative;
+
+  border: none;
+  background-color: rgba(255, 255, 255, 0.45);
+
+  padding: 1rem;
+  width: 100%;
+  max-width: 100%;
+  height: 3rem;
+
+  transition: 0.3s all;
+}
+
+.input:hover
+{
+  box-shadow: 0rem 0.25rem 1.25rem 0rem rgba(0, 0, 0, 0.05);
+}
+
+.input:focus
+{
+  outline:none;
+  border: none;
+}
