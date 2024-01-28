@@ -73,4 +73,6 @@
 .error {
   color: red;
   height: 1rem;
+  text-transform: capitalize;
+  padding-top: 0.8rem;
 }

@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import styles from './page.module.css';
+import styles from "./page.module.css";
 
-import bg from '/public/background.png';
+import bg from "/public/background.png";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-import * as Realm from 'realm-web';
+import * as Realm from "realm-web";
 const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
 
 export default function Login() {
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
   const router = useRouter();
@@ -29,13 +29,13 @@ export default function Login() {
       if (_user.id === app.currentUser.id) {
         //FLAG
         setUser(_user);
-        router.push('/dashboard');
+        router.push("/dashboard");
       } else {
         console.error(error);
         setError(error);
       }
     } catch (error) {
-      setError(error);
+      setError(error.message);
     }
   };
 
@@ -47,10 +47,10 @@ export default function Login() {
         fill
         sizes="100vw"
         style={{
-          position: 'absolute',
+          position: "absolute",
           zIndex: -1,
-          objectFit: 'cover',
-          objectPosition: 'center',
+          objectFit: "cover",
+          objectPosition: "center",
         }}
       />
       <div>
@@ -77,22 +77,21 @@ export default function Login() {
             className={styles.check}
           />
           <label htmlFor="remember" className={styles.check}>
-            {' '}
+            {" "}
             Remember me
           </label>
         </span>
 
         <button onClick={handleSignin}>Log in</button>
-        <p className={styles.error}>{error ? error.message : ''}</p>
-
         <a href="#" className={styles.forgot}>
           I forgot my password
         </a>
         <p>
-          Don&rsquo;t have an account?{' '}
-          <Link href="/register" style={{ textDecoration: 'underline' }}>
+          Don&rsquo;t have an account?{" "}
+          <Link href="/register" style={{ textDecoration: "underline" }}>
             Register
           </Link>
+          {error && <p className={styles.error}>{error.split(":")[2]}</p>}
         </p>
       </div>
     </div>
