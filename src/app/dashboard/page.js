@@ -62,7 +62,6 @@ export default function Home() {
     setIsLoading(false);
   };
 
-  console.log(JSON.stringify(messages));
   return (
     <main className={styles.main}>
       <div className={styles.chatbox}>
