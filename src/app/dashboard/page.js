@@ -49,8 +49,6 @@ export default function Home() {
 
       if (json) {
         setMessages((oldMessages) => {
-          console.log(oldMessages);
-          console.log(result);
           return [...oldMessages, { message, response: json }];
         });
       }

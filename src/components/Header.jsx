@@ -13,15 +13,10 @@ const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
 export default function Header() {
   const pathname = usePathname();
 
-  const [user, setUser] = useState('Log in');
+  const id = Object.keys(app.allUsers);
+  const user = app.allUsers[id];
 
-  useEffect(() => {
-    const id = Object.keys(app.allUsers);
-    const user = app.allUsers[id];
-
-    if (user) setUser(user._profile.data.email);
-    else setUser('Log in');
-  }, []);
+  const email = user._profile.data.email;
 
   return (
     <header>
@@ -34,7 +29,7 @@ export default function Header() {
       </Link>{' '}
       {pathname !== '/login' && (
         <Link href="/login" className={styles.login}>
-          {user ? user.toString() : 'Log in'}
+          {email ? email.toString() : 'Log in'}
         </Link>
       )}
     </header>
