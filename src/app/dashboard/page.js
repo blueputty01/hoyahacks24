@@ -9,7 +9,6 @@ import { auth } from 'utils/config';
 export default function Home() {
   const [user, loading, error] = useAuthState(auth, {});
   const uid = user?.uid;
-  console.log(uid);
   const [messages, setMessages] = useState([]);
   const API_URL = '/api/llm';
 
@@ -36,7 +35,7 @@ export default function Home() {
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        body: JSON.stringify({ message, uid }),
+        body: JSON.stringify({ message, userId: uid }),
       });
 
       const json = await response.json();

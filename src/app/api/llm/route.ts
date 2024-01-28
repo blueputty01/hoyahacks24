@@ -35,7 +35,6 @@ export async function POST(req: NextRequest) {
   const { message, userId } = request;
 
   let previous_questions = (await pull(userId)) as any[];
-  console.log(previous_questions);
 
   const prev_messages = previous_questions.map(({ message }) => ({
     role: 'user',
