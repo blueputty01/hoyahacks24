@@ -3,8 +3,6 @@ import { FaUserLock } from 'react-icons/fa';
 import styles from './header.module.css';
 import Link from 'next/link';
 
-import { useEffect, useState } from 'react';
-
 import { usePathname } from 'next/navigation';
 
 import * as Realm from 'realm-web';
@@ -15,7 +13,6 @@ export default function Header() {
 
   const id = Object.keys(app.allUsers);
   const user = app.allUsers[id];
-
   const email = user._profile.data.email;
 
   return (
