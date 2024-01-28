@@ -1,11 +1,11 @@
-"use client";
-import styles from "./page.module.css";
+'use client';
+import styles from './page.module.css';
 
-import Input from "components/Input";
-import { useState, useEffect, useMemo } from "react";
-import { Fragment } from "react";
+import Input from 'components/Input';
+import { useState, useEffect, useMemo } from 'react';
+import { Fragment } from 'react';
 
-import * as Realm from "realm-web";
+import * as Realm from 'realm-web';
 const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
   const userId = user?.id;
 
   const [messages, setMessages] = useState([]);
-  const API_URL = "/api/llm";
+  const API_URL = '/api/llm';
 
   useEffect(() => {
     async function fetchData() {
@@ -41,7 +41,7 @@ export default function Home() {
   async function postData(message) {
     try {
       const response = await fetch(API_URL, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({ message, userId }),
       });
 
@@ -61,9 +61,9 @@ export default function Home() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleFormSubmit = (message) => {
+  const handleFormSubmit = async (message) => {
     setIsLoading(true);
-    postData(message);
+    await postData(message);
     setIsLoading(false);
   };
 
@@ -84,11 +84,11 @@ export default function Home() {
             Hello! I&rsquo;m SeCUREPod, a digital assistant who can provide
             understandable, actionable personal security and digital literacy
             guidance. <br></br>This is a free [beta] version and may be subject
-            to time-outs in situations with poor internet. You can find me at{" "}
+            to time-outs in situations with poor internet. You can find me at{' '}
             <a href="https://hoyahacks24.vercel.app/">
               https://hoyahacks24.vercel.app/
             </a>
-            .{" "}
+            .{' '}
           </div>
         )}
       </div>
