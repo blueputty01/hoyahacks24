@@ -12,7 +12,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Login() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
+
+  // const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +32,6 @@ export default function Login() {
     const _user = await App.login(credientials);
 
     if (_user.id === App.currentUser.id) {
-      //FLAG
       setUser(_user);
       router.push("/dashboard");
     } else {
