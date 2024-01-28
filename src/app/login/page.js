@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import styles from './page.module.css';
 
@@ -11,8 +11,8 @@ import { auth } from 'utils/config';
 import Image from 'next/image';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const router = useRouter();
 
@@ -22,7 +22,7 @@ export default function Login() {
   const handleSignin = async () => {
     await signInWithEmailAndPassword(email, password);
     if (user) {
-      router.push("/");
+      router.push('/');
     } else {
       console.log(error);
     }
@@ -58,17 +58,23 @@ export default function Login() {
           className={styles.text}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <span>
+          <input
+            type="checkbox"
+            id="remember"
+            name="rembember"
+            className={styles.check}
+          />
+          <label for="remember" className={styles.check}>
+            {' '}
+            Remember me
+          </label>
+        </span>
+
         <button onClick={handleSignin}>Log in</button>
-        <input
-          type="checkbox"
-          id="remember"
-          name="rembember"
-          className={styles.check}
-        />
-        <label for="remember" className={styles.check}>
-          {" "}
-          Remember me
-        </label>
+        <a href="#" className={styles.forgot}>
+          I forgot my password
+        </a>
       </div>
     </div>
   );
