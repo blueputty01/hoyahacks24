@@ -34,9 +34,9 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const request = JSON.parse(await req.text()) as any;
-  const { message, user_id } = request;
+  const { message, userId } = request;
 
-  let previous_questions = (await pull(user_id)) as string[];
+  let previous_questions = (await pull(userId)) as string[];
   const prev_messages = previous_questions.map((m) => ({
     role: 'user',
     content: m,
@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
     ],
   });
 
-  await push(user_id, message, result.result.response);
+  await push(userId, message, result.result.response);
 
   return NextResponse.json(result);
 }
