@@ -26,7 +26,6 @@ export default function Login() {
     try {
       const _user = await app.logIn(credentials);
       if (_user.id === app.currentUser.id) {
-        //FLAG
         // after sign in
         router.refresh();
         router.replace('/dashboard');
