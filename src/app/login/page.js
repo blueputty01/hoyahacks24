@@ -7,7 +7,6 @@ import bg from "/public/background.png";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { auth } from "utils/config";
 import Image from "next/image";
 
 import Link from "next/link";
