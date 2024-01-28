@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header>
       <Link href="/">SeCUREpod</Link>{' '}
-      {pathname !== '/login' && (
+      {pathname !== '/login' && pathname !== '/dashboard' && (
         <Link href="/login" className={styles.login}>
           Log in
         </Link>
