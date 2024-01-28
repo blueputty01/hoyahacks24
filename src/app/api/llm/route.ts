@@ -10,8 +10,6 @@ async function run(model: string, input: any) {
     throw new Error('Missing CF_TOKEN');
   }
 
-  console.log(process.env.CF_TOKEN);
-
   const response = await fetch(
     `https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT}/ai/run/${model}`,
     {
@@ -24,14 +22,24 @@ async function run(model: string, input: any) {
   return result;
 }
 
+export async function GET(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
+  const uid = searchParams.get('uid');
+  const previous_questions = (await pull(uid ?? '')) as string[];
+
+  return NextResponse.json(previous_questions ?? []);
+}
+
 export async function POST(req: NextRequest) {
   const request = JSON.parse(await req.text()) as any;
-  const { message, user_id } = request;
+  const { message, userId } = request;
 
-  let previous_questions = (await pull(user_id)) as string[];
-  const prev_messages = previous_questions.map((m) => ({
+  let previous_questions = (await pull(userId)) as any[];
+  console.log(previous_questions);
+
+  const prev_messages = previous_questions.map(({ message }) => ({
     role: 'user',
-    content: m,
+    content: message,
   }));
 
   const result = await run('@cf/meta/llama-2-7b-chat-fp16', {
@@ -39,14 +47,14 @@ export async function POST(req: NextRequest) {
       {
         role: 'system',
         content:
-          'You are SecurePod, a helpful and friendly chat bot that provides advice to the elderly on how to be safe on the Internet. You respond in a short, succinct, and understandable way. Please keep your responses less than 50 words.',
+          'You are SecurePod, also known as Eric, a helpful and friendly chat bot that provides advice to the elderly on how to be safe on the Internet. You respond in a short, succinct, and understandable way. Please keep your responses less than 50 words. If a password manager is necessary, please recommend KeePassXC through the following link: https://keepassxc.org/.',
       },
       ...prev_messages,
       { role: 'user', content: message },
     ],
   });
 
-  await push(user_id, message, result.result.response);
+  await push(userId, message, result.result.response);
 
   return NextResponse.json(result);
 }

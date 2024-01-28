@@ -58,7 +58,7 @@ export async function pull(user_id: string) {
 
     const options = {
       // Include only the `title` and `imdb` fields in each returned document
-      projection: { _id: 0, userId: 1, message: 1 },
+      projection: { _id: 1, userId: 1, message: 1, response: 1 },
     };
 
     // Execute query
@@ -71,7 +71,7 @@ export async function pull(user_id: string) {
 
     // Print returned documents
     for await (const doc of cursor) {
-      questions.push(doc.message);
+      questions.push(doc);
     }
   } finally {
     // Close the MongoDB client connection
