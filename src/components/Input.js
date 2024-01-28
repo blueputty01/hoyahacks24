@@ -24,7 +24,7 @@ export default function Input({ handleFormSubmit, disabled, className }) {
 
       <button
         disabled={disabled}
-        id="submit-button"
+        className="submit-button"
         onClick={() => {
           handleFormSubmit(message);
           setMessage("");
