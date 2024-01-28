@@ -17,6 +17,8 @@
   padding: 3rem;
   flex-direction: column;
   display: flex;
+  width: 26rem;
+
   gap: 1rem;
 }
 

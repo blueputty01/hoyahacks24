@@ -9,9 +9,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+import * as Realm from 'realm-web';
+const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [error, setError] = useState('');
 
   const router = useRouter();
 
@@ -47,16 +52,12 @@ export default function Login() {
         />
         <button
           onClick={async () => {
-            const result = await fetch('/api/users/register', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ email, password }),
-            });
-            // if (!error) {
-            //   router.push('/login');
-            // }
+            try {
+              await app.emailPasswordAuth.registerUser({ email, password });
+              router.push('/login');
+            } catch (error) {
+              setError(error.message);
+            }
           }}
         >
           Register
@@ -67,6 +68,7 @@ export default function Login() {
             Login
           </Link>
         </p>
+        {error && <p className={styles.error}>{error}</p>}
       </div>
     </div>
   );
