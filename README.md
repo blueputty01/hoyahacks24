@@ -2,7 +2,7 @@
 
 ## ❓ General
 
-Built for the 2024 Hoya Hacks hackathon, we built a security advice chatbot as demonstration of a highly scalable method to increase digital literacy among the general population.
+For the 2024 Hoya Hacks hackathon, we built a security advice chatbot as demonstration of a highly scalable method to increase digital literacy among the general population.
 
 🏆 We won the CloudFlare track!
 
