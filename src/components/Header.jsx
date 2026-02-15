@@ -22,19 +22,53 @@ export default function Header() {
   }, [user]);
 
   return (
-    <header>
-      <Link href="/">
-        {' '}
-        <FaUserLock size={20} className={styles.logo} />
-      </Link>
-      <Link href="/">
-        <b>SeCUREpod</b>
-      </Link>{' '}
-      {pathname !== '/login' && (
-        <Link href="/login" className={styles.login}>
-          {user ? user.toString() : 'Log in'}
+    <header
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'stretch',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '0.5rem',
+        }}
+      >
+        <p>
+          {
+            ' This project has been deprecated and the user account system retired. Please refer to the '
+          }
+          <Link
+            href="https://github.com/blueputty01/hoyahacks24/tree/main/src"
+            style={{
+              textDecoration: 'underline',
+            }}
+          >
+            source
+          </Link>
+          !
+        </p>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+        }}
+      >
+        <Link href="/">
+          {' '}
+          <FaUserLock size={20} className={styles.logo} />
         </Link>
-      )}
+        <Link href="/">
+          <b>SeCUREpod</b>
+        </Link>
+        {pathname !== '/login' && (
+          <Link href="/login" className={styles.login}>
+            {user ? user.toString() : 'Log in'}
+          </Link>
+        )}
+      </div>
     </header>
   );
 }
