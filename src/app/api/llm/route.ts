@@ -16,7 +16,7 @@ async function run(model: string, input: any) {
       headers: { Authorization: `Bearer ${process.env.CF_TOKEN}` },
       method: 'POST',
       body: JSON.stringify(input),
-    }
+    },
   );
   const result = await response.json();
   return result;

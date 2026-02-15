@@ -2,7 +2,7 @@
 
 import styles from './page.module.css';
 
-import bg from '/public/background.png';
+import bg from 'public/background.png';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
